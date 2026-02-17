@@ -1,0 +1,4 @@
+# Path generation outputs
+bezier_points:
+  type: json.JSONDataset
+  filepath: data/03_primary/bezier_points.json
