@@ -4,19 +4,20 @@
 # Documentation for this file format can be found in "Parameters"
 # Link: https://docs.kedro.org/en/1.2.0/configuration/parameters.html
 
-path_generation:
-  - agv: agv0
+
+agvs:
+  - id: agv0
     marked_states:
       - [0, 0]
       - [10, 5]
       - [20, 10]
     orientation: [1, 0]
-    radius: 5.0
+    radius: 0.5
 
-  - agv: agv1
+  - id: agv1
     marked_states:
       - [20, 20]
       - [10, 15]
       - [0, 10]
     orientation: [-1, 0]
-    radius: 5.0
+    radius: 0.5
