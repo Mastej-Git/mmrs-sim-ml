@@ -65,7 +65,7 @@ def create_paths(agvs: list[dict]) -> dict:
     paths = {}
     for agv in agvs:
         path = _create_path(agv["marked_states"], agv["orientation"], agv["radius"])
-        paths[agv["agv"]] = path
+        paths[agv["id"]] = path
 
-    print(paths)
+    # print(paths)
     return paths
