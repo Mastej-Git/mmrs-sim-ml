@@ -36,5 +36,5 @@ def parse_maps(raw_maps_zip: dict[str, Callable]) -> dict[str, np.ndarray]:
         array = _parse_map("data/01_raw/maps/" + filename + ".map")
         map_arrays[filename] = array
 
-    print(f"DEBUG wynik: {len(map_arrays)} map")
+    # print(f"DEBUG wynik: {len(map_arrays)} map")
     return map_arrays
