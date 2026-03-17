@@ -26,3 +26,10 @@ voronoi_data:
   dataset:
     type: mmrs_sim_ml.datasets.npy_dataset.NpyDataset
   filename_suffix: .npy
+
+distance_field_data:
+  type: kedro_datasets.partitions.PartitionedDataset
+  path: data/03_primary/distance_field_data/
+  dataset:
+    type: mmrs_sim_ml.datasets.npy_dataset.NpyDataset
+  filename_suffix: .npy
