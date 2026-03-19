@@ -33,3 +33,7 @@ distance_field_data:
   dataset:
     type: mmrs_sim_ml.datasets.npy_dataset.NpyDataset
   filename_suffix: .npy
+
+random_ms_data:
+  type: json.JSONDataset
+  filepath: data/04_feature/random_ms/bezier_points.json
