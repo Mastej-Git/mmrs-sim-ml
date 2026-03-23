@@ -1,5 +1,5 @@
 """
-This is a boilerplate pipeline 'map_loading'
+This is a boilerplate pipeline 'data_processing'
 generated using Kedro 1.2.0
 """
 

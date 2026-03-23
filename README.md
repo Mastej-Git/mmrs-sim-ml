@@ -102,6 +102,7 @@ To automatically strip out all output cell contents before committing to `git`, 
 
 ## Command sheet
 
+Run specific pipeline
 ```
 kedro run --pipeline=map_loading
 ```
@@ -109,4 +110,9 @@ kedro run --pipeline=map_loading
 New pipeline generation
 ```
 kedro pipeline create <pipeline_name>
+```
+
+List all the pipelines
+```
+kedro registery list  
 ```
