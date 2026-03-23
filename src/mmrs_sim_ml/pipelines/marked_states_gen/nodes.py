@@ -198,6 +198,28 @@ def _generate_multiple_sets_of_ms(
     
     return all_paths
 
+# def random_ms_gen(
+#         agvs: list[dict],
+#         maps_dict: dict[str, Callable[[], np.ndarray]],
+#         voronoi_skeleton: dict[str, Callable[[], np.ndarray]],
+#         distance_field: dict[str, Callable[[], np.ndarray]],
+#     ) -> dict[str, dict[str, list[tuple[float, float]]]]:
+
+#     ms_random_dict = {}
+#     for name in maps_dict.keys():
+#         ms_agvs_dict = {}
+#         ms_random_list = _generate_multiple_sets_of_ms(
+#             len(agvs),
+#             voronoi_skeleton[name](),
+#             distance_field[name]()
+#         )
+#         for agv in agvs:
+#             print(int(agv["id"][-1]))
+#             ms_agvs_dict[agv["id"]] = ms_random_list[int(agv["id"][-1])] if ms_random_list[int(agv["id"][-1])]
+#         ms_random_dict[name] = ms_agvs_dict
+
+#     return ms_random_dict
+
 def random_ms_gen(
         agvs: list[dict],
         maps_dict: dict[str, Callable[[], np.ndarray]],

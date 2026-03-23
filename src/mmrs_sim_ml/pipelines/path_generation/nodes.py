@@ -69,3 +69,16 @@ def create_paths(agvs: list[dict]) -> dict:
 
     # print(paths)
     return paths
+
+# def create_paths(
+#     agvs: list[dict],
+#     rand_ms_dict: dict[str, list[list[tuple[float, float]]]]
+#     ) -> dict[str, dict[str, list[tuple[float, float]]]]:
+#     paths_dict = {}
+#     for name, rand_ms in rand_ms.items():
+#         for agv_ms_list in rand_ms:
+#             path = _create_path(agv_ms_list, agv["orientation"], agv["radius"])
+#             paths_dict[name] = 
+
+#     # print(paths)
+#     return paths_dict
