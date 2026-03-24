@@ -5,7 +5,7 @@ generated using Kedro 1.2.0
 
 from kedro.pipeline import Node, Pipeline  # noqa
 
-from .nodes import random_ms_gen
+from .nodes import random_ms_gen, create_paths
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -20,5 +20,14 @@ def create_pipeline(**kwargs) -> Pipeline:
             },
             outputs="random_ms_data",
             name="random_ms_gen",
+        ),
+        Node(
+            func=create_paths,
+            inputs={
+                "agvs": "params:agvs",
+                "rand_ms_dict": "random_ms_data",
+            },
+            outputs="bezier_ms_data",
+            name="bezier_ms_gen",
         ),
     ])
