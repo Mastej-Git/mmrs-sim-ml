@@ -158,9 +158,9 @@ def _generate_multiple_sets_of_ms(
     min_clearance: float = 5.0,
     min_distance: int = 20,
     endpoint_exclusion_radius: float = None
-) -> list[list[tuple[float, float]]]:
+) -> dict[str, list[tuple[float, float]]]:
     
-    all_paths = []
+    all_paths = {}
     used_endpoints = []
     
     if endpoint_exclusion_radius is None:
@@ -169,6 +169,7 @@ def _generate_multiple_sets_of_ms(
     
     max_attempts = num_paths * 3
     attempts = 0
+    agv_id = 0
     
     while len(all_paths) < num_paths and attempts < max_attempts:
         attempts += 1
@@ -184,7 +185,7 @@ def _generate_multiple_sets_of_ms(
         
         if path and len(path) >= 2:
             is_duplicate = False
-            for existing_path in all_paths:
+            for existing_path in all_paths.values():
                 start_dist = np.sqrt((path[0][0] - existing_path[0][0])**2 + (path[0][1] - existing_path[0][1])**2)
                 end_dist = np.sqrt((path[-1][0] - existing_path[-1][0])**2 + (path[-1][1] - existing_path[-1][1])**2)
                 if start_dist < endpoint_exclusion_radius or end_dist < endpoint_exclusion_radius:
@@ -192,40 +193,20 @@ def _generate_multiple_sets_of_ms(
                     break
             
             if not is_duplicate:
-                all_paths.append(path)
+                # all_paths.append(path)
+                all_paths[f"agv{agv_id}"] = path
                 used_endpoints.append(path[0])
                 used_endpoints.append(path[-1])
+                agv_id += 1
     
     return all_paths
-
-# def random_ms_gen(
-#         agvs: list[dict],
-#         maps_dict: dict[str, Callable[[], np.ndarray]],
-#         voronoi_skeleton: dict[str, Callable[[], np.ndarray]],
-#         distance_field: dict[str, Callable[[], np.ndarray]],
-#     ) -> dict[str, dict[str, list[tuple[float, float]]]]:
-
-#     ms_random_dict = {}
-#     for name in maps_dict.keys():
-#         ms_agvs_dict = {}
-#         ms_random_list = _generate_multiple_sets_of_ms(
-#             len(agvs),
-#             voronoi_skeleton[name](),
-#             distance_field[name]()
-#         )
-#         for agv in agvs:
-#             print(int(agv["id"][-1]))
-#             ms_agvs_dict[agv["id"]] = ms_random_list[int(agv["id"][-1])] if ms_random_list[int(agv["id"][-1])]
-#         ms_random_dict[name] = ms_agvs_dict
-
-#     return ms_random_dict
 
 def random_ms_gen(
         agvs: list[dict],
         maps_dict: dict[str, Callable[[], np.ndarray]],
         voronoi_skeleton: dict[str, Callable[[], np.ndarray]],
         distance_field: dict[str, Callable[[], np.ndarray]],
-    ) -> dict[str, list[list[tuple[float, float]]]]:
+    ) -> dict[str, dict[str, list[tuple[float, float]]]]:
 
     ms_random_dict = {}
     for name in maps_dict.keys():

@@ -1,5 +1,5 @@
 """
-This is a boilerplate pipeline 'marked_states_gen'
+This is a boilerplate pipeline 'shared_space_science'
 generated using Kedro 1.2.0
 """
 
